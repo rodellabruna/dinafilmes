@@ -1,0 +1,19 @@
+.bg-bege {
+    background-color: #F3D9A7 !important;
+  }
+
+  /* Cores personalizadas dos botões */
+  .btn-vermelho {
+    background-color: #FF5A3E;
+   
+  }
+
+  .btn-azul-claro {
+    background-color: #6EADA2;
+   
+  }
+
+  /* Ajuste para centralizar conteúdo */
+  .centered-content {
+    text-align: center;
+  }

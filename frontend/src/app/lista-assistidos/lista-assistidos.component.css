@@ -1,0 +1,140 @@
+.preco {
+    font-weight: bold;
+    text-align: right;
+    font-size: 18px;
+    border-right: 1px;
+  }
+  
+  .produto {
+    text-align: left;
+    font-size: 20px;
+  }
+  
+  .descricao {
+    text-align: justify;
+  }
+  
+  .categoria {
+    font-size: 13px;
+  }
+  
+  .image-container {
+    height: 300px; /* Altura desejada para todas as imagens */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .image-container img {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; /* Para centralizar verticalmente */
+  }
+  
+  .imagem-lista {
+    width: 300px;
+    height: 430px;
+    background-color: #fff;
+    margin: 0 auto;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Garante que a imagem não ultrapasse a div */
+  }
+  
+  .imagem-dentro {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta a imagem para cobrir a área da div mantendo a proporção */
+    display: block;
+  }
+  
+  .watched {
+    background-color: #f7e0b0;
+    color:  #070707;
+  }
+  
+  .img-list {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .list-view-container {
+    margin-top: 20px;
+  }
+  
+  .toggle-view-btn {
+    margin-bottom: 20px;
+  }
+  
+  .table {
+    width: 100%;
+    background-color: white;
+  }
+  
+  .table th, .table td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .table img {
+    width: 50px;
+    height: 75px;
+  }
+  
+  .imagem-dentro {
+    width: 100%;
+    height: auto;
+  }
+  
+  .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .toggle-view-btn {
+    background-color: #f7e0b0;
+    color:  #070707; /* Cor do texto */
+    border: none; /* Remover bordas padrão */
+  /* Tamanho da fonte */
+    cursor: pointer; /* Mudar o cursor ao passar sobre o botão */
+  }
+  
+  .toggle-view-btn:hover {
+    background-color: #a07518; /* Efeito ao passar o mouse */
+  }
+  
+  .float-end {
+    float: right; /* Alinha o botão à direita */
+    margin: 10px; /* Margem para dar espaçamento */
+  }
+  
+  
+  .bi-heart-fill {
+    font-size: 50px;
+    color: red;
+  }
+  .bg-bege {
+    background-color: #F3D9A7 !important;
+  }
+
+  p {
+    color: white;
+  }
+
+  .abobora {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  ng-template {
+    min-height: 800px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }

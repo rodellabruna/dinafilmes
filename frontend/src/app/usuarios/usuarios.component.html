@@ -1,0 +1,84 @@
+<div class="container-fluid" style="background-color:#00678e">
+    <div class="container">
+      <br>
+      <h2 class="text-center text-white">Usuários cadastrados</h2>
+      <div class="text-center">
+        <!-- Ícone de coração -->
+        <i class="bi-person-circle" style="font-size: 50px; color: white;"></i>
+      </div>
+  
+  
+      <!-- Visualização em Lista -->
+      <div class="list-view-container text-white">
+        <ng-container *ngIf="usuarios && usuarios.length > 0; else semUsuarios">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Id Usuário</th>
+                <th>e-mail</th>
+                <th>Usuário desde</th>
+                <th>Ativo?</th>
+                <th>Enviado Aviso 1?</th>
+                <th>Enviado Aviso 2?</th>
+                <th>Ações</th>
+                <th>Última movimentação</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let usuario of usuarios">
+                <td>{{ usuario.codigoUsuario }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ formatarData(usuario.dataCriacao) }}</td>        
+                <td>{{ usuario.ativo ? 'Sim' : 'Não' }}</td>
+                <td>{{ usuario.aviso1 ? 'Sim' : 'Não' }}</td>
+                <td>{{ usuario.aviso2 ? 'Sim' : 'Não' }}</td>
+                <td *ngIf="usuario.ativo === true && usuario.aviso1 === false && usuario.aviso2 === false">
+                    <div class="d-flex flex-column align-items-center">
+
+                        <div class="d-flex gap-2 mb-2">
+                            <button class="btn watched w-100" (click)="enviarAviso1(usuario.codigoUsuario)">Enviar Aviso 1</button>
+                        </div>
+                    </div>
+                </td>
+
+                <td *ngIf="usuario.ativo === true && usuario.aviso1 === true && usuario.aviso2 === false">
+                    <div class="d-flex flex-column align-items-center">
+
+                        <div class="d-flex gap-2 mb-2">
+                            <button class="btn btn-azul-claro w-100" (click)="enviarAviso2(usuario.codigoUsuario)">Enviar Aviso 2</button>
+                        </div>
+                    </div>
+                </td>
+
+                <td *ngIf="usuario.ativo === true && usuario.aviso1 === true && usuario.aviso2 === true">
+                    <div class="d-flex flex-column align-items-center">
+
+                        <div class="d-flex gap-2 mb-2">
+                            <button class="btn btn-vermelho w-100" (click)="inativarUsuario(usuario.codigoUsuario)">Inativar Usuario</button>
+                        </div>
+                    </div>
+                </td>
+
+                <td *ngIf="usuario.ativo !== true">
+                    <div class="d-flex flex-column align-items-center">
+
+                        <div class="d-flex gap-2 mb-2">
+                            <button class="btn green w-100" (click)="reativarUsuario(usuario.codigoUsuario)">Reativar usuário e zerar os Avisos</button>
+                        </div>
+                    </div>
+                </td>
+                <td>{{ formatarData(usuario.dataAtualizacao) }}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </ng-container>
+      </div>
+  
+      <!-- Caso a lista esteja vazia, exibe uma mensagem -->
+      <ng-template #semUsuarios>
+        <h2 class=" text-white">Não há usuários cadastrados.</h2>
+      </ng-template>
+    </div>
+  </div>

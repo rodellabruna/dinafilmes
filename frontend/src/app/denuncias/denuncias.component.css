@@ -1,0 +1,25 @@
+.comentario-col {
+    max-width: 400px; /* Define a largura máxima desejada para a célula */
+    white-space: normal; /* Permite quebra de linha */
+    word-wrap: break-word; /* Quebra as palavras longas para caber na célula */
+  }
+
+  .watched {
+    background-color: #f7e0b0;
+    color:  #070707;
+  }
+
+  .abobora {
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  ng-template {
+    min-height: 800px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }

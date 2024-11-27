@@ -1,0 +1,37 @@
+<!-- The Modal Trocar Senha -->
+<div class="modal" id="myModal15">
+  <div class="modal-dialog">
+    <div class="modal-content bg-bege"> <!-- Fundo bege aplicado -->
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <p class="navbar-brand" href="#">
+          <img src="/assets/logo.png" alt="Logo" style="width:40px;">
+        </p>
+        <h4 class="modal-title">Vamos recuperar sua senha</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="window.location.href='/vitrine';"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="esqueciSenha()">
+          <div class="mb-3">
+            <label for="emailLogin">Informe seu e-mail cadastrado:</label>
+            <input type="email" class="form-control" id="emailLogin" formControlName="email" placeholder="Digite seu email" required>
+          </div>
+
+          <div *ngIf="mensagem" class="alert" [ngClass]="emailExistente ? 'alert-success' : 'alert-danger'">
+            {{ mensagem }}
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer d-flex justify-content-center">
+            <a href="/vitrine" class="btn btn-vermelho mx-2" role="button">Cancelar</a>
+            <button type="submit" class="btn btn-azul-claro mx-2" [disabled]="isSubmitDisabled">Enviar link de recuperação</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

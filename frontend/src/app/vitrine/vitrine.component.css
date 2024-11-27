@@ -1,0 +1,46 @@
+
+/* Cards de Ação, Terror e da seção inicial */
+.movie-card {
+  width: 200px;
+  height: 250px; 
+}
+
+.movie-card {
+    background-color: #011f51;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .movie-card img {
+    width: 100%;
+    
+  }
+  
+  .movie-card .card-body {
+    padding: 15px;
+  }
+  
+  .movie-title {
+    color: #f1efef;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    color: #ebe2e2;
+    margin-bottom: 0.05rem;
+  }
+  .carousel-item {
+    padding: 0 15px;
+    color: #050505;
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 5%;
+    color: #050505;
+  }

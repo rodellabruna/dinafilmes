@@ -1,0 +1,112 @@
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-bege"> <!-- Fundo bege aplicado -->
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <p class="navbar-brand" href="#">
+          <img src="/assets/logo.png" alt="Logo" style="width:40px;">
+        </p>
+        <h4 class="modal-title">Criar conta</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body criar conta -->
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="cadastrar()">
+          <div class="mb-3 mt-3">
+            <label for="name">Nome:</label>
+            <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" formControlName="nomeUsuario" />
+            <div *ngIf="form.get('nomeUsuario')?.invalid && form.get('nomeUsuario')?.touched" class="alert alert-danger">
+              O nome é obrigatório.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Digite seu email" formControlName="email" />
+            <div *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched" class="alert alert-danger">
+              O e-mail é obrigatório.
+            </div>
+            <div *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched" class="alert alert-danger">
+              Informe um e-mail válido.
+            </div>
+            <div *ngIf="emailExistente" class="alert alert-danger">
+              Este e-mail já está em uso.
+            </div>
+          </div>
+
+          <div class="mb-3 mt-3">
+            <label for="password">Senha:</label>
+            <input type="password" class="form-control" id="password" placeholder="Digite sua senha" formControlName="senha" />
+            <div *ngIf="form.get('senha')?.invalid && form.get('senha')?.touched" class="alert alert-danger">
+              A senha é obrigatória.
+            </div>
+            <div *ngIf="form.get('senha')?.errors?.['minlength'] && form.get('senha')?.touched" class="alert alert-danger">
+              A senha deve conter pelo menos 8 dígitos.
+            </div>
+            <div *ngIf="form.get('senha')?.errors?.['maxlength'] && form.get('senha')?.touched" class="alert alert-danger">
+              A senha deve conter no máximo 20 dígitos.
+            </div>
+            <div *ngIf="form.get('senha')?.errors?.['passwordComplexity'] && form.get('senha')?.touched" class="alert alert-danger">
+              A senha deve conter pelo menos uma letra, um número e um caractere especial.
+            </div>
+          </div>
+
+          <div class="mb-3 mt-3">
+            <label for="password_confirma">Confirma Senha:</label>
+            <input type="password" class="form-control" id="password_confirma" placeholder="Confirme sua senha" formControlName="confirmPassword" />
+          </div>
+
+          <div *ngIf="form.hasError('mismatch')" class="alert alert-danger">
+            As senhas não coincidem.
+          </div>
+
+          <div class="form-check centered-content mt-3">
+            <input type="checkbox" class="form-check-input" formControlName="agreement" id="check2" />
+            <label class="form-check-label ms-2" for="check2">Li e concordo com os <a class="text-primary" href="/termos">Termos de uso</a></label>
+            <div *ngIf="form.get('agreement')?.invalid && form.get('agreement')?.touched" class="alert alert-danger">
+              É necessário concordar com os termos de uso.
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="button" class="btn btn-vermelho mx-2" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-azul-claro mx-2" [disabled]="isSubmitDisabled">Criar Conta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Verificação de Email -->
+<div class="modal" id="successModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-bege"> <!-- Fundo bege aplicado -->
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <p class="navbar-brand" href="#">
+          <img src="/assets/logo.png" alt="Logo" style="width:40px;">
+        </p>
+        <h4 class="modal-title">Conta Criada</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body text-center">
+        <p>Sua conta foi criada com sucesso!</p>
+        <p>Por favor, verifique o link enviado para o seu email para ativar sua conta.</p>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-azul-claro" data-bs-dismiss="modal">
+          <span>Fechar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

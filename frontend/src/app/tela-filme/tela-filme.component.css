@@ -1,0 +1,259 @@
+body {
+    background-color: #00678e;
+    color: white;
+    margin: 0;
+    padding: 0;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    /* height: 90vh; */
+    font-family: 'Inter', sans-serif;
+}
+ 
+.container {
+    background-color: #b4b7b9;
+    border-radius: 20px;
+    padding: 20px;
+    width: 900px;
+    /* display: flex; */
+    /* flex-direction: row; */
+}
+ 
+.filme-card {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    margin-bottom: 30px;
+}
+ 
+.icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+    justify-items: center;
+}
+ 
+.icon-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+ 
+.icon-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Centraliza o texto em relação ao ícone */
+    width: 100px;
+    
+}
+ 
+.icon-group span {
+    color: white;
+    margin-top: 5px;
+    font-size: 14px;
+  
+}
+
+.youtube-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-column: 2; /* Coloca o YouTube na primeira coluna */
+    margin-top: 1px;
+}
+
+.youtube-icon i {
+    font-size: 2.8em; /* Aumenta o tamanho do ícone do YouTube */
+    margin-left: 5px; /* Espaço entre o ícone e o texto */
+}
+   
+.icon-size {
+    font-size: 40px;
+}
+
+.stars {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 17px;
+}
+ 
+.detalhes {
+    margin-left: 20px;
+    flex-grow: 1;
+    margin-top: 0px;
+    width: 40vw;   
+    color: white; 
+}
+ 
+.details h2 {
+    margin: 0;
+}
+ 
+.details p {
+    margin: 5px 0;
+}
+ 
+.sinopse {
+    margin-top: 10px;
+    text-align: justify;
+    font-optical-sizing: auto;
+}
+
+.imagem-lista {
+    width: 300px;
+    height: 430px;
+    background-color: #fff;
+    margin: 0 auto;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+ 
+.imagem-dentro {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none;
+}
+
+.video-container {
+    position: relative;
+    width: 80%;
+    padding-bottom: 45%; /* 16:9 Aspect Ratio */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.sei-la{
+    display: flex;
+    justify-content: center;
+}
+
+.comentarios-card {
+    background-color: #F7E0B0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%; /* Ajusta ao tamanho da página */
+    max-width: 900px; /* Define um limite máximo */
+    margin-top: 20px;
+    color: black
+}
+
+
+
+.comment-header {
+    font-weight: bold;
+}
+
+.comment-body {
+    margin-top: 5px;
+}
+
+
+
+.list-comentaios-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.poster {
+    width: 300px;
+    margin-right: 20px;
+}
+
+.card {
+    border: 1px solid transparent;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #f8f9fa;
+  }
+  
+  .comment-container {
+    border-radius: 5px;
+  }
+  
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .ml-2 {
+    margin-left: 8px;
+  }
+
+  .profile-pic {
+    width: 350px;
+    height: 350px;
+    background-color: #fff;
+    margin: 0 auto;
+    border: 2px dashed #030303;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Garante que a imagem não ultrapasse a div */
+  }
+
+  p {
+    font-size: 0.9em;
+    color: white;
+  }
+
+  .p-2{
+    font-size: 0.9em;
+    color: black;
+  }
+
+  .bg-bege {
+    background-color: #F3D9A7 !important;
+  }
+h5 {
+    color: white;
+}
+
+
+.spoiler {
+    filter: blur(5px);
+  }

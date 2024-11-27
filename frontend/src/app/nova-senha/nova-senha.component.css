@@ -1,0 +1,20 @@
+
+.container {
+  background-color: #00678e;
+  border-radius: 50px; /* Aumenta a curvatura dos cantos */
+  padding: 30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h3 img {
+  vertical-align: middle;
+}
+
+.input-pequeno {
+  max-width: 300px; /* Diminui a largura dos campos de input */
+  margin: 0 auto; /* Centraliza os inputs */
+}
+
+.btn-azul-claro {
+  background-color: #6EADA2;
+}

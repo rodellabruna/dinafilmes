@@ -1,0 +1,48 @@
+<div class="container-fluid" style="background-color:#00678e">
+    <div class="container">
+        <br>
+        <h2 class="text-center text-white">Contatos Recebidos</h2>
+        <div class="text-center">
+            <i class="bi-envelope" style="font-size: 50px; color: white;"></i>
+        </div>
+
+        <!-- Visualização em Lista -->
+        <div class="list-view-container text-white">
+            <ng-container *ngIf="contatos && contatos.length > 0; else semContatos">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Assunto</th>
+                            <th>Texto</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let contato of contatos">
+                            <td>{{ contato.nome }}</td>
+                            <td>{{ contato.assunto }}</td>
+                            <td>{{ contato.mensagem }}</td>
+
+                            <td *ngIf="!contato.lido">
+                                <button class="btn btn-primary" (click)="marcarComoLido(contato.id)">
+                                    Lido
+                                </button>
+                            </td>
+
+                            <td *ngIf="contato.lido">
+                                <span>Já lido</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-container>
+        </div>
+
+        <!-- Caso a lista esteja vazia, exibe uma mensagem -->
+        <ng-template #semContatos>
+            <h2 class="text-white">Não há contatos recebidos.</h2>
+        </ng-template>
+    </div>
+</div>
+

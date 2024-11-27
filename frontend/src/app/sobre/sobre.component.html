@@ -1,0 +1,55 @@
+<section class="py-5" style="background-color: #00678e">
+    <div class="container" style="background-color: #F3D9A7;">
+        <!-- About Section -->
+        <section class="text-left">
+            <div>
+                <h2 class="text-center">
+                    <img src="/assets/logo.png" alt="Logo" class="me-2" style="width: 40px;">
+                    Dina Filmes
+                </h2>
+            </div>
+            <p class="text-center">
+                É com prazer que apresentamos a plataforma Dina Filmes, um ambiente colaborativo que oferece uma abordagem inovadora para o entretenimento cinematográfico.
+                <br>
+                A Dina Filmes proporciona aos usuários a oportunidade de interagir com outros membros da comunidade, criar conexões e compartilhar experiências cinematográficas.
+                <br>
+                Junte-se a nós na Dina Filmes e faça parte de uma comunidade apaixonada pelo cinema, onde cada filme é uma oportunidade para compartilhar e se conectar com outros entusiastas.
+            </p>
+        </section>
+
+        <br>
+
+        <!-- Seção de Contato -->
+        <section>
+            <h2 class="text-center text-primary text-dark">Contato</h2>
+            <p class="text-center">Quer ajudar a Dina? Conte para nós o que está pensando!</p>
+
+            <!-- Formulário reativo -->
+            <form [formGroup]="contatoForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" formControlName="nome" placeholder="Digite seu nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="assunto">Assunto</label>
+                    <select class="form-control" id="assunto" formControlName="assunto">
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="usuario-banido">Usuário Banido</option>
+                        <option value="duvida">Dúvida</option>
+                        <option value="sugestoes">Sugestões</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem">Digite aqui!</label>
+                    <textarea class="form-control" id="mensagem" formControlName="mensagem" rows="5" placeholder="Escreva sua mensagem"></textarea>
+                </div>
+
+                <br>
+                <button type="submit" class="btn btn-azul-claro mx-2">Enviar</button>
+            </form>
+        </section>
+    </div>
+</section>

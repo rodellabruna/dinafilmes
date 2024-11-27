@@ -1,0 +1,51 @@
+<section class="py-5" style="background-color:#00678e">
+  <div class="container" style="background-color: #F3D9A7;">
+    <!-- About Section -->
+    <section class="text-left">
+      <div>
+        <h3 class="d-flex align-items-center">
+          <img src="/assets/logo.png" alt="Logo" style="width: 40px; margin-right: 8px;">
+          <span style="margin-top: 4px;">Dina Filmes</span>
+        </h3>
+      </div>
+
+      <div class="container" style="background-color: #F3D9A7;"><br>
+        <h6 class="title">Inserir a Nova Senha!</h6><br>
+
+        <form [formGroup]="form" (ngSubmit)="alterarSenha()">
+          <div class="mb-3">
+            <label for="password">Senha Nova:</label><br>
+            <input type="password" class="form-control input-pequeno" id="password" placeholder="Digite sua senha" formControlName="novaSenha" />
+            <div *ngIf="form.get('novaSenha')?.invalid && form.get('novaSenha')?.touched" class="alert alert-danger">
+              A senha é obrigatória.
+            </div>
+            <div *ngIf="form.get('novaSenha')?.errors?.['minlength'] && form.get('novaSenha')?.touched" class="alert alert-danger">
+              A senha deve conter pelo menos 8 dígitos.
+            </div>
+            <div *ngIf="form.get('novaSenha')?.errors?.['maxlength'] && form.get('novaSenha')?.touched" class="alert alert-danger">
+              A senha deve conter no máximo 20 dígitos.
+            </div>
+            <div *ngIf="form.get('novaSenha')?.errors?.['passwordComplexity'] && form.get('novaSenha')?.touched" class="alert alert-danger">
+              A senha deve conter pelo menos uma letra, um número e um caractere especial.
+            </div>
+          </div>
+
+          <div class="mb-3 mt-3">
+            <label for="password_confirma">Confirmar Senha Nova:</label>
+            <input type="password" class="form-control input-pequeno" id="Confirma_confirma" placeholder="Confirme sua senha" formControlName="confirmaNovaSenha" />
+          </div>
+
+          <div *ngIf="form.hasError('mismatch')" class="alert alert-danger">
+            As senhas não coincidem.
+          </div>
+          <div *ngIf="showError" class="alert alert-danger mt-3">
+            {{ mensagem }}
+          </div><br>
+
+          <button type="submit" class="btn btn-azul-claro">Redefinir Senha</button>
+        </form><br>
+      </div>
+    </section>
+    <br>
+  </div>
+</section>

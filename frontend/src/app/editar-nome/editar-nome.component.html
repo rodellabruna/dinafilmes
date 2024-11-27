@@ -1,0 +1,41 @@
+<!-- The Modal Trocar Nome na Plataforma-->
+<div class="modal" id="myModal3">
+  <div class="modal-dialog">
+    <div class="modal-content bg-bege">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <p class="navbar-brand" href="#">
+          <img src="/assets/logo.png" alt="Logo" style="width:40px;">
+        </p>
+        <h4 class="modal-title">Alterar nome de exibição</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body  criar conta-->
+      <div class="modal-body">
+
+<form [formGroup]="form" (ngSubmit)="alterarNome()">
+    <div class="mb-3 mt-3">
+      <label for="name">Nome atual: {{nomeUsuario}}</label>
+    </div>
+  
+    <div class="mb-3">
+      <label for="novonome">Novo nome:</label>
+      <input type="text" class="form-control" id="novonome" placeholder="Digite o novo nome para exibição" formControlName="novoNome" />
+    </div>
+   
+  
+    <!-- Modal footer -->
+    <div class="modal-footer d-flex justify-content-center">
+      <button type="button" class="btn btn-vermelho mx-2" data-bs-dismiss="modal">Cancelar</button>
+      <button type="submit" class="btn btn-azul-claro mx-2" [disabled]="isSubmitDisabled">Alterar</button>
+    </div>
+  </form>
+
+</div>
+
+</div>
+</div>
+</div>
+  

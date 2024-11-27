@@ -1,0 +1,84 @@
+<div class="container-fluid" style="background-color:#00678e">
+    <div class="container abobora">
+      <br>
+      <h2 class="text-center text-white">Avaliação de denuncias</h2>
+      <div class="text-center">
+        <!-- Ícone de coração -->
+        <i class="bi bi-megaphone" style="font-size: 50px; color: white;"></i>
+      </div>
+  
+  
+      <!-- Visualização em Lista -->
+      <div class="list-view-container text-white">
+        <ng-container *ngIf="denuncias && denuncias.length > 0; else semFavoritos">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Data Denuncia</th>
+                <th>Denunciante</th>
+                <th>Codigo Filme</th>
+                <th>Comentário</th>
+                <th>Denunciado</th>
+                <th>Tipo Denuncia</th>
+                <th>Acatar Denuncia?</th>
+                <th>Data Resolucao</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let denuncia of denuncias">
+                <td>{{ formatarData(denuncia.dataCriacao) }}</td>
+                <td>{{ denuncia.usuarioDenunciante }}</td>       
+                <td>
+                  <a *ngIf="denuncia.codigoFilme" [routerLink]="['/tela-filme', denuncia.codigoFilme]">
+                    {{ denuncia.codigoFilme }}
+                  </a>
+                  <span *ngIf="!denuncia.codigoFilme" class="text-white">
+                    Filme não encontrado
+                  </span>
+                </td>
+                <td class="comentario-col">{{ comentarios[denuncia.codigoComentario] ? comentarios[denuncia.codigoComentario].comentario : 'Comentário não encontrado' }}</td>
+                <td>
+                  <a *ngIf="denuncia.codigoUsuario" [routerLink]="['/usuario', denuncia.codigoUsuario]">
+                    {{ denuncia.codigoUsuario }}
+                  </a>
+                  <span *ngIf="!denuncia.codigoUsuario" class="text-white">
+                    Usuário não encontrado
+                  </span>
+                </td>
+                <td>{{ denuncia.tipoDenuncia }}</td>
+                <td *ngIf="denuncia.resolvido !== true">
+                  <div class="d-flex flex-column align-items-center">
+
+                    <div class="d-flex gap-2 mb-2">
+
+                        <button class="btn btn-vermelho w-20" (click)="resolverDenuncia(denuncia.codigoDenuncia)">Sim</button>
+
+
+                        <button class="btn btn-azul-claro w-20" (click)="recusarDenuncia(denuncia.codigoDenuncia)">Não</button>
+
+                    </div>
+
+                      <button class="btn watched w-40 watched" (click)="recusarDenuncia(denuncia.codigoDenuncia)">Denúncia já tratada</button>
+
+                  </div>
+                </td>
+                <td *ngIf="denuncia.resolvido === true && denuncia.denunciaAcatada === true" >Sim</td>
+                <td *ngIf="denuncia.resolvido === true && denuncia.denunciaAcatada !== true" >Não</td>
+                <td *ngIf="denuncia.resolvido !== true">Aguardando resolução</td> <!-- Espaço vazio se não for resolvido -->
+                <td *ngIf="denuncia.resolvido === true">{{ formatarData(denuncia.dataResolucao) }}</td>
+
+
+              </tr>
+            </tbody>
+          </table>
+        </ng-container>
+      </div>
+  
+      <!-- Caso a lista esteja vazia, exibe uma mensagem -->
+      <ng-template #semFavoritos>
+        <h2 class=" text-white">Não há denuncias.</h2>
+      </ng-template>
+    </div>
+  </div>
+  

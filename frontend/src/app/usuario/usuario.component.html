@@ -1,0 +1,64 @@
+<div class="container-fluid" style="background-color:#00678e">
+    <div class="container abobora">
+      <br>
+      <h2 class="text-center text-white">Buscar Usuário</h2>
+      <div class="text-center">
+        <i class="bi-person-circle" style="font-size: 50px; color: white;"></i>
+      </div>
+  
+      <!-- Campo de pesquisa -->
+      <div class="d-flex justify-content-center mt-3">
+        <input [(ngModel)]="codigoUsuario" (keyup.enter)="pesquisarUsuario()" class="form-control w-50" placeholder="Digite o código do usuário">
+        <button (click)="pesquisarUsuario()" class="btn marinho ms-2">Pesquisar</button>
+      </div>
+  
+      <!-- Tabela de exibição de informações do usuário -->
+      <div class="list-view-container text-white mt-4" *ngIf="usuario">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Id Usuário</th>
+              <th>e-mail</th>
+              <th>Usuário desde</th>
+              <th>Ativo?</th>
+              <th>Enviado Aviso 1?</th>
+              <th>Enviado Aviso 2?</th>
+              <th>Ações</th>
+              <th>Última movimentação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ usuario.codigoUsuario }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>{{ formatarData(usuario.dataCriacao) }}</td>
+              <td>{{ usuario.ativo ? 'Sim' : 'Não' }}</td>
+              <td>{{ usuario.aviso1 ? 'Sim' : 'Não' }}</td>
+              <td>{{ usuario.aviso2 ? 'Sim' : 'Não' }}</td>
+              <td>
+                <div *ngIf="usuario.ativo === true && usuario.aviso1 === false && usuario.aviso2 === false">
+                  <button class="btn watched w-100" (click)="enviarAviso1(usuario.codigoUsuario)">Enviar Aviso 1</button>
+                </div>
+                <div *ngIf="usuario.ativo === true && usuario.aviso1 === true && usuario.aviso2 === false">
+                  <button class="btn btn-azul-claro w-100" (click)="enviarAviso2(usuario.codigoUsuario)">Enviar Aviso 2</button>
+                </div>
+                <div *ngIf="usuario.ativo === true && usuario.aviso1 === true && usuario.aviso2 === true">
+                  <button class="btn btn-vermelho w-100" (click)="inativarUsuario(usuario.codigoUsuario)">Inativar Usuário</button>
+                </div>
+                <div *ngIf="usuario.ativo !== true">
+                  <button class="btn green w-100" (click)="reativarUsuario(usuario.codigoUsuario)">Reativar Usuário e zerar os Avisos</button>
+                </div>
+              </td>
+              <td>{{ formatarData(usuario.dataAtualizacao) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- Caso o usuário não seja encontrado -->
+      <div *ngIf="usuario === null" class="text-white text-center mt-3">
+        <h4>Usuário não encontrado.</h4>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,75 @@
+<div class="container-fluid" style="background-color:#00678e">
+  <div class="container">
+    <br>
+    <h2 class="text-center text-white">Seus filmes favoritos</h2>
+    <div class="text-center">
+      <!-- Ícone de coração -->
+      <i class="bi bi-heart-fill" style="font-size: 50px; color: red;"></i>
+    </div>
+    <div>
+<!-- Botão para alternar entre grid e lista -->
+<button (click)="toggleViewMode()" class="btn toggle-view-btn float-end">
+  {{ viewMode === 'grid' ? 'Exibir lista' : 'Exibir grade' }}
+</button>
+</div>
+<div>
+    <!-- Visualização em Grade -->
+    <div class="row justify-content-center " *ngIf="viewMode === 'grid'">
+      <ng-container *ngIf="favoritos && favoritos.length > 0; else semFavoritos">
+        <div *ngFor="let filme of favoritos" class="col-md-3" style="margin: 20px ;">
+          <div class="imagem-lista bg-bege">
+            <img [src]="filme.foto" alt="Imagem do perfil" class="imagem-dentro"><br>
+          </div>
+          <p class="Nome">Nome: {{filme.nomeFilme}}<br>
+          <p class="Produzido por:">Distribuído: {{filme.distribuidor}}</p>
+          <p class="Lançamento">Ano de Lançamento: {{filme.anoLancamento}}</p>
+          <a [routerLink]="['/tela-filme', filme.codigoFilme]" class="d-block text-decoration-none">
+            <button class="btn watched">Ver mais</button>
+          </a>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Visualização em Lista -->
+    <div *ngIf="viewMode === 'list'" class="list-view-container text-white">
+      <ng-container *ngIf="favoritos && favoritos.length > 0; else semFavoritos">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Filme</th>
+              <th>Nome</th>
+              <th>Gênero</th>
+              <th>Lançamento</th>
+              <th>Distribuidor</th>
+              <th>IMDb</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let filme of favoritos">
+              <td><img [src]="filme.foto" alt="Imagem do perfil" class="img-list"></td>
+              <td>{{ filme.nomeFilme }}</td>
+              <td>{{ filme.genero }}</td>
+              <td>{{ filme.anoLancamento }}</td>
+              <td>{{ filme.distribuidor }}</td>
+              <td>{{ filme.avaliacaoIMDB }}</td>
+              <td>
+                <a [routerLink]="['/tela-filme', filme.codigoFilme]" class="d-block text-decoration-none">
+                  <button class="btn watched">Ver mais</button>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+    </div>
+
+    <!-- Caso a lista esteja vazia, exibe uma mensagem -->
+    <div class="abobora">
+    <ng-template #semFavoritos>
+      <h3 class=" text-white">Você ainda não tem filmes favoritos.</h3>
+    </ng-template>
+  </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,89 @@
+/* Responsividade básica */
+
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    background-color:#00678e; /* Cor de fundo */
+    color:  #070707;
+    text-align: left;
+  }
+  
+  .profile-header h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .profile-pic {
+    width: 350px;
+    height: 350px;
+    background-color: #fff;
+    margin: 0 auto;
+    border: 2px dashed #030303;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Garante que a imagem não ultrapasse a div */
+  }
+
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta a imagem para cobrir a área da div mantendo a proporção */
+    display: block;
+  }
+  
+  .profile-header h3 {
+    margin-top: 10px;
+  }
+  
+  .profile-info {
+    margin-top: 20px;
+  }
+  
+  .profile-info p {
+    margin: 5px 0;
+  }
+  
+  .edit-link {
+    color:  #070707;
+    text-decoration: underline;
+  }
+  
+  .profile-actions {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .profile-actions .btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .favorite {
+    background-color: #6EADA2;
+    color: #070707;
+  }
+  
+  .to-watch {
+    background-color: #f38979;
+    color:  #070707;
+  }
+  
+  .watched {
+    background-color: #f7e0b0;
+    color:  #070707;
+  }
+  
+  /* Layout responsivo para telas maiores */
+  @media (min-width: 768px) {
+    .profile-actions {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  

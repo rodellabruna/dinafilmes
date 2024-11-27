@@ -1,0 +1,45 @@
+<div class="container-fluid" style="background-color:#00678e">
+    <div class="container">
+    <div class="profile-header">
+    
+      <h2 class="text-white">Olá, {{ nomeUsuario }}!</h2>
+      <div class="profile-pic">
+
+        
+        <!-- Aqui vai a imagem do perfil -->
+        <img src="{{foto}}" alt="Imagem do perfil" class="profile-img"><br>
+
+
+        
+      </div>
+      <div class="text-center text-white">
+        <a class="edit-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#myModal6">Editar foto</a>
+      </div>
+      
+      <div class="profile-info">
+        <div class="text-white"> 
+        <p><b>Você está na Dina Filmes desde:</b> {{ dataCriacao }}</p>
+    </div>
+  </div>
+    </div>
+  
+    <div class="profile-info text-white"> <!-- Texto em branco -->
+      <p><b>Seu email de acesso é:</b> {{ email }}</p>
+      <p>Quer editar seu nome? <a class="edit-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#myModal3">Clique aqui</a></p>
+      <p>Quer alterar sua senha? <a class="edit-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#myModal4">Clique aqui</a></p>
+  </div>
+  <div class="text-white"> <!-- Texto em branco -->
+      <p>Deletear dados e sair da plataforma <a class="edit-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#myModal5">Clique aqui</a></p>
+  </div>
+  
+    <div class="profile-header">
+      <h2 class="text-white">Confira suas listas:</h2>
+    </div>
+    <div class="profile-actions">
+      <button class="btn favorite"><a class="nav-link" href="/lista-favoritos">Filmes favoritos</a></button>
+      <button class="btn to-watch"><a class="nav-link" href="/lista-aassistir">Filmes à assistir</a></button>
+      <button class="btn watched"><a class="nav-link" href="/lista-assistidos">Filmes já assistidos</a></button>
+    </div>
+
+
+

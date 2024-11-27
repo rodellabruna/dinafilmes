@@ -1,0 +1,367 @@
+<body>
+  <div class="container" style="background-color:#00678e">
+    <div class="filme-card">
+      <div class="poster">
+        <div class="imagem-lista">
+          <img src="{{filme.foto}}" alt="Capa do filme {{filme.nomeFilme}}" class="imagem-dentro">
+        </div>
+        <h5 style="margin-top: 10px; font-weight: 600; font-size: 1.45em;">Deixe sua nota:</h5>
+        <div class="stars">
+          <button class="icon-button"><i class="bi bi-star" style="font-size: 41px; color:white"></i></button>
+          <button class="icon-button"><i class="bi bi-star" style="font-size: 41px; color:white"></i></button>
+          <button class="icon-button"><i class="bi bi-star" style="font-size: 41px; color:white"></i></button>
+          <button class="icon-button"><i class="bi bi-star" style="font-size: 41px; color:white"></i></button>
+          <button class="icon-button"><i class="bi bi-star" style="font-size: 41px; color:white"></i></button>
+        </div>
+
+        <div class="icons">
+          <div class="nav-item" *ngIf="!isAuthenticated">
+            <div class="icon-group">
+              <span style="font-size: 0.8em;">Incluir filme em À Assistir</span>
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#myModal2">
+                <i class="bi bi-bookmark fs-2 icon-size" style="color:#011f51;"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="nav-item" *ngIf="isAuthenticated">
+            <div class="icon-group">
+              <span style="font-size: 0.8em;">Incluir filme em À Assistir</span>
+              <button class="icon-button" (click)="aassistirFilme()" [disabled]="carregandoAssistido">
+                <i class="bi icon-size" *ngIf="!carregandoAAssistir"
+                  [ngClass]="filmeAAssistir ? 'bi bi-bookmark-fill' : 'bi bi-bookmark'"
+                  [style.color]="filmeAAssistir ? '#011f51' : 'white'">
+                </i>
+                <i class="bi bi-arrow-repeat icon-size" *ngIf="carregandoAAssistir" style="color: gray;"></i>
+              </button>
+            </div>
+          </div>
+        
+          <div class="nav-item" *ngIf="!isAuthenticated">
+            <div class="icon-group">
+              <span style="font-size: 0.8em;">Incluir filme em Assistidos</span>
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#myModal2">
+                <i class="bi bi-check-circle icon-size" style="color: #6EADA2;"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="nav-item" *ngIf="isAuthenticated">
+            <div class="icon-group">
+              <span style="font-size: 0.8em;">Incluir filme em Assistidos</span>
+              <button class="icon-button" (click)="assistirFilme()" [disabled]="carregandoAssistido">
+                <i class="bi icon-size" *ngIf="!carregandoAssistido"
+                  [ngClass]="filmeAssistido ? 'bi-check-circle-fill' : 'bi-check-circle'"
+                  [style.color]="filmeAssistido ? '#6EADA2' : 'white'">
+                </i>
+                <i class="bi bi-arrow-repeat icon-size" *ngIf="carregandoAssistido" style="color: gray;"></i>
+              </button>
+            </div>
+          </div>
+        
+          <div class="nav-item" *ngIf="!isAuthenticated">
+            <div class="icon-group">
+              <span style="font-size: 0.8em;">Favoritar<br>Filme</span>
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#myModal2">
+                <i class="bi bi-heart icon-size" style="color: red;"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="nav-item" *ngIf="isAuthenticated">
+            <div class="icon-group">
+              <span style="font-size: 0.8em;">Favoritar<br>Filme</span>
+              <button class="icon-button" (click)="favoritarFilme()" [disabled]="carregandoFavorito">
+                <i class="bi icon-size" *ngIf="!carregandoFavorito" [ngClass]="filmeFavoritado ? 'bi-heart-fill' : 'bi-heart'"
+                  [style.color]="filmeFavoritado ? 'red' : 'white'">
+                </i>
+                <i class="bi bi-arrow-repeat icon-size" *ngIf="carregandoFavorito" style="color: gray;"></i>
+              </button>
+            </div>
+          </div>
+        
+          <div class="youtube-icon">
+            <button class="icon-button" data-bs-toggle="modal" data-bs-target="#trailerModal">
+              <span style="font-size: 0.8em; color: white;">Assistir Trailer</span>
+              <i class="bi bi-youtube icon-size" style="color: red;"></i>
+          </button>
+          </div>
+        </div>
+       </div> 
+      <div class="detalhes">
+        <h2 style="font-size: 2.1em;">Filme: {{filme.nomeFilme}}</h2><br>
+        <p style="font-size: 1.1em;"><strong>Ano Lançamento:</strong> {{filme.anoLancamento}}</p>
+        <p style="font-size: 1.1em;"><strong>Classificação Indicativa:</strong> {{filme.classificacaoIndicativa}}</p>
+        <p style="font-size: 1.1em;"><strong>Distribuidor:</strong> {{filme.distribuidor}}</p>
+        <p style="font-size: 1.1em;"><strong>Gênero:</strong> {{filme.genero}}</p>
+        <p style="font-size: 1.1em;"><strong>Diretor(a):</strong> {{filme.diretor}}</p>
+        <p style="font-size: 1.1em;"><strong>Nota IMDB:</strong> {{filme.avaliacaoIMDB}}</p><br>
+        <p style="font-size: 1.1em;"><strong>Elenco:</strong> {{filme.elenco}}</p><br>
+        <p class="sinopse" style="font-size: 1.1em;">
+          <strong>Sinopse:</strong> {{filme.sinopse}}
+        </p><br>
+      </div>
+    </div>
+  </div>
+
+  <div class="sei-la">
+    <div class="comentarios-card position-relative">
+      <h6 style="color:  black;">REGRAS DOS COMENTÁRIOS:</h6>
+      <div style="color: black;">Proibido discussões políticas.</div>
+      <div style="color: black;">Proibido racismo, homofobia ou qualquer tipo de discurso de ódio. Sujeito a suspenção da conta</div>
+      <div style="color: black;">Comentários com spoilers devem ser sinalizados.</div>
+      <div style="color: black;">Os comentários são de responsabilidade de seus autores e não refletem em nada a opinião do criador do site.</div><br>
+      <h3>{{ qtddComentarios }} Comentários</h3>
+      <div>
+
+        <div class="topo-comentarios">
+          <div class="nav-item" *ngIf="!isAuthenticated">
+            <div>
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#myModal2">
+                <input type="text" class="form-control diplay-flex" id="comentario"
+                  placeholder="Faça o login para comentar!" />
+              </a>
+            </div>
+            <br>
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#myModal2">
+              <button type="submit" class="btn btn-azul-claro">Enviar Comentário</button>
+            </a>
+          </div>
+
+          <div class="nav-tem" *ngIf="isAuthenticated">
+            <form [formGroup]="comentarioForm" (ngSubmit)="inserirComentario()">
+              <div>
+                <input type="text" class="form-control diplay-flex" id="comentario"
+                  placeholder="Comente aqui e conte o que achou do filme!" formControlName="comentario"
+                  (input)="atualizarContagem()" maxlength="500" />
+              </div>
+              <div class="p-2">{{ caracteresRestantes }} caracteres restantes</div>
+              <button type="submit" class="btn btn-azul-claro" [disabled]="comentarioForm.invalid">Enviar
+                Comentário</button>
+                <button type="button" class="btn btn-azul-claro position-absolute" style="right: 20px;" (click)="toggleSpoilers()">
+                  {{ exibirSpoilers ? 'Esconder spoilers' : 'Exibir todos os comentários' }}
+                </button>
+            </form>
+
+          </div>
+        </div>
+
+        <br>
+
+        <div class="list-comentarios-container">
+          <div *ngFor="let x of comentarios" class="card comment-container">
+            <div class="row no-gutters">
+              <!-- Coluna da esquerda: Nome do Usuário e Imagem Fixa -->
+              <div class="col-md-2">
+                <div class="d-flex flex-column h-100 justify-content-center align-items-center">
+                  <div class="mb-3 p-2">
+                    <strong>{{ x.nomeUsuario }}</strong>
+                  </div>
+                  <div class="p-2">
+                    <img [src]="x.fotoUsuario || fotoPadrao" alt="Avatar"
+                      style="width:50px; height: 50px; object-fit: cover; border-radius: 50%" class="rounded-pill">
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Coluna do meio: Comentário -->
+              <div class="col-md-8">
+                <div class="h-100 d-flex align-items-center p-2">
+                  <div class="p-2"  [ngClass]="{'spoiler': x.comSpoiler && !exibirSpoilers}">
+                    {{ exibirSpoilers || !x.comSpoiler ? x.comentario : 'Comentário com spoiler!' }}</div>
+                </div>
+              </div>
+
+
+              <!-- Coluna da direita: Remover Comentário e Curtir -->
+              <div class="col-md-2">
+                <div class="d-flex flex-column h-100 justify-content-between">
+                                    <!-- Denunciar Comentário -->
+                                    <div class="p-2">
+                                      <div>
+                                        <div class="icon-group"
+                                        *ngIf="!isAuthenticated">
+                                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#myModal2">
+                                          <i class='bi-megaphone' title="Denunciar comentário" style="font-size: 15px; color: #011f51;"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="nav-item" *ngIf="isAuthenticated">
+                                      <div class="icon-group"
+                                        *ngIf="isAuthenticated">
+                                        <a (click)="denunciarComentario(x.codigoComentario)" class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#denunciarModal">
+                                          <i class='bi-megaphone' title="Denunciar comentário" style="font-size: 15px; color: #011f51;"></i></a>
+                                        </div>
+                                    </div>
+                                  </div>
+
+
+                  <!-- Remover Comentário -->
+                  <div class="p-2">
+                    <button type="button" class="btn btn-vermelho mx-2"
+                      *ngIf="isAuthenticated && x.codigoUsuario === codigoUsuario"
+                      (click)="removerComentario(x.codigoComentario)">
+                      Remover
+                    </button>
+                  </div>
+                  <!-- Curtir Comentário e Quantidade de Likes -->
+                  <div class="p-2 d-flex align-items-center justify-content-center">
+                    <span>{{ x.qtddLikes }}</span>
+                    <div class="nav-item" *ngIf="!isAuthenticated">
+                      <div class="icon-group">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#myModal2">
+                          <i class='bi-hand-thumbs-up' title="Curtir comentário" style="font-size: 25px; color: #011f51;"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="nav-item" *ngIf="isAuthenticated">
+                      <div class="icon-group">
+                        <button class="icon-button" (click)="curtirComentario(x.codigoComentario)"
+                          [disabled]="carregandoFavorito">
+                          <i class="bi" *ngIf="!carregandoFavorito" title="Curtir comentário"
+                            [ngClass]="likes[x.codigoComentario] ? 'bi-hand-thumbs-up-fill' : 'bi-hand-thumbs-up'"
+                            [style.color]="likes[x.codigoComentario] ? '#011f51' : '#011f51'" style="font-size: 25px;">
+                          </i>
+                          <i class="bi bi-arrow-repeat" *ngIf="carregandoFavorito"
+                            style="font-size: 25px; color: gray;"></i>
+                          <!-- Ícone de carregamento -->
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <ng-template #semComentarios>
+        <p>Nenhum comentário ainda... Seja você o primeiro a comentar!</p>
+      </ng-template>
+    </div>
+  </div>
+
+
+  <!-- Modal do trailher -->
+  <!-- <div class="modal fade" id="trailerModal" tabindex="-1" aria-labelledby="trailerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-bege">
+        <div class="modal-header p-2">
+          <img src="/assets/logo.png" alt="Logo" style="width: 40px;">
+          <h5 class="modal-title text-dark" id="trailerModalLabel"> Trailer: {{filme.nomeFilme}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="filme.trailerUrl && filme.trailerUrl.trim() !== ''; else trailerNaoEncontrado">
+            <div class="ratio ratio-16x9">
+              <iframe [src]="filme.trailerUrl | safe" title="Trailer" allowfullscreen></iframe>
+            </div>
+          </div>
+          <ng-template #trailerNaoEncontrado>
+            <p style="text-align: center; font-size: 1.2em;">Infelizmente o trailer oficial deste filme não foi
+              encontrado.</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <div class="modal fade" id="trailerModal" tabindex="-1" aria-labelledby="trailerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-bege">
+        <div class="modal-header p-2">
+          <img src="/assets/logo.png" alt="Logo" style="width: 40px;">
+          <h5 class="modal-title text-dark" id="trailerModalLabel"> Trailer: {{filme.nomeFilme}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="filme.trailerUrl && filme.trailerUrl.trim() !== ''; else trailerNaoEncontrado">
+            <div class="ratio ratio-16x9">
+              <!-- Adicionando a referência local #trailerIframe -->
+              <iframe #trailerIframe [src]="filme.trailerUrl | safe" title="Trailer" allowfullscreen></iframe>
+            </div>
+          </div>
+          <ng-template #trailerNaoEncontrado>
+            <p style="text-align: center; font-size: 1.2em;">Infelizmente o trailer oficial deste filme não foi
+              encontrado.</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Modal de Spoilers -->
+  <div class="modal fade" id="spoilerModal" tabindex="-1" aria-labelledby="spoilerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-bege">
+        <div class="modal-header p-2">
+          <img src="/assets/logo.png" alt="Logo" style="width: 40px;  margin-right: 10px;">
+          <h5  class="modal-title" id="spoilerModalLabel" style="color: black;" > Atenção</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-2">
+          Este comentário contém spoilers?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-vermelho" (click)="confirmarComentario(true)"
+            data-bs-dismiss="modal">Sim</button>
+          <button type="button" class="btn btn-azul-claro" (click)="confirmarComentario(false)"
+            data-bs-dismiss="modal">Não</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal de Denuncia -->
+    <div class="modal fade" id="denunciarModal" tabindex="-1" aria-labelledby="denunciarModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content bg-bege">
+          <div class="modal-header p-2">
+            <img src="/assets/logo.png" alt="Logo" style="width: 40px;  margin-right: 10px;">
+            <h5  class="modal-title" id="spoilerModalLabel" style="color: black;" > Denúncia!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-2">
+            O que há de errado com esse comentário?
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="check1" name="tipoDenuncia" [(ngModel)]="tipoDenuncia" value="SPOILER">
+              <label class="form-check-label" for="check1">Spoiler não sinalizado</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="check2" name="tipoDenuncia" [(ngModel)]="tipoDenuncia" value="PRECONCEITO">
+              <label class="form-check-label" for="check2">Preconceito (Racial, Machismo, Homofobia, etc.)</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="check3" name="tipoDenuncia" [(ngModel)]="tipoDenuncia" value="DESRESPEITO">
+              <label class="form-check-label" for="check3">Desrespeito ou Xingamento</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="check4" name="tipoDenuncia" [(ngModel)]="tipoDenuncia" value="DISCURSOODIO">
+              <label class="form-check-label" for="check4">Discurso de ódio</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="check5" name="tipoDenuncia" [(ngModel)]="tipoDenuncia" value="SPAM">
+              <label class="form-check-label" for="check5">Spam ou propaganda</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-vermelho"
+              data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-azul-claro" (click)="enviarDenuncia()"
+              data-bs-dismiss="modal">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+</body>

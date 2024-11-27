@@ -1,0 +1,14 @@
+
+.container {
+  background-color: #00678e;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.text-justify {
+  text-align: justify;
+}
+.btn-azul-claro {
+  background-color: #6EADA2;
+
+}

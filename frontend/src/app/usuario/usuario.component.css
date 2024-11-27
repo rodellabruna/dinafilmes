@@ -1,0 +1,21 @@
+.watched {
+    background-color: #f7e0b0;
+    color:  #070707;
+  }
+
+  .green {
+    background-color: #6EADA2;
+    color:  white;
+  }
+
+  .marinho {
+    background-color: #011F51;
+    color:  white;
+  }
+
+  .abobora {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }

@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<!-- Modal Login -->
+<div class="modal" id="myModal2">
+    <div class="modal-dialog">
+      <div class="modal-content bg-bege"> <!-- Classe de fundo personalizada -->
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <p class="navbar-brand" href="#">
+            <img src="/assets/logo.png" alt="Logo" style="width:40px;">
+          </p>
+          <h4 class="modal-title">Entrar</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+        </div>
+
+        <!-- Modal Body Login -->
+        <div class="modal-body">
+          <form (ngSubmit)="fazerLogin()">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <input type="email" class="form-control" id="emailLogin" [(ngModel)]="obj.email" placeholder="Digite seu email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="pswd" class="form-label">Senha:</label>
+              <input type="password" class="form-control" id="passwordLogin" [(ngModel)]="obj.senhaAtual" placeholder="Digite sua senha" name="password" required>
+            </div>
+
+            <div *ngIf="showError" class="text-danger centered-content mt-3">{{ mensagem }}</div>
+
+            <div class="centered-content mt-3">
+              <label>Não tem uma conta? <a href="#" data-bs-toggle="modal" data-bs-target="#myModal">Criar conta</a></label>
+            </div>
+            
+            <div class="centered-content mt-3">
+              <label><a href="#" data-bs-toggle="modal" data-bs-target="#myModal15">Esqueci a Senha</a></label>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer d-flex justify-content-center">
+              <button type="button" class="btn btn-vermelho mx-2"  data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-azul-claro mx-2">Entrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>

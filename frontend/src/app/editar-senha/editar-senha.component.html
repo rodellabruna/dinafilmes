@@ -1,0 +1,62 @@
+<!-- The Modal Trocar Senha-->
+<div class="modal" id="myModal4">
+  <div class="modal-dialog">
+    <div class="modal-content bg-bege"> <!-- Classe de fundo bege aplicada -->
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <p class="navbar-brand" href="#">
+          <img src="/assets/logo.png" alt="Logo" style="width:40px;">
+        </p>
+        <h4 class="modal-title">Alterar senha</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="alterarSenha()">
+          <div class="mb-3 mt-3">
+            <label for="senha">Senha atual:</label>
+            <input type="password" class="form-control" id="senha" placeholder="Digite sua senha atual" formControlName="senhaAntiga" />
+          </div>
+
+          <div class="mb-3">
+            <label for="password">Senha Nova:</label>
+            <input type="password" class="form-control" id="novaSenha" placeholder="Digite sua senha" formControlName="novaSenha" />
+            <div *ngIf="form.get('novaSenha')?.invalid && form.get('novaSenha')?.touched" class="alert alert-danger">
+              A senha é obrigatória.
+            </div>
+            <div *ngIf="form.get('novaSenha')?.errors?.['minlength'] && form.get('novaSenha')?.touched" class="alert alert-danger">
+              A senha deve conter pelo menos 8 dígitos.
+            </div>
+            <div *ngIf="form.get('novaSenha')?.errors?.['maxlength'] && form.get('novaSenha')?.touched" class="alert alert-danger">
+              A senha deve conter no máximo 20 dígitos.
+            </div>
+            <div *ngIf="form.get('novaSenha')?.errors?.['passwordComplexity'] && form.get('novaSenha')?.touched" class="alert alert-danger">
+              A senha deve conter pelo menos uma letra, um número e um caractere especial.
+            </div>
+          </div>
+
+          <div class="mb-3 mt-3">
+            <label for="password_confirma">Confirmar Senha Nova:</label>
+            <input type="password" class="form-control" id="confirmaNovaSenha" placeholder="Confirme sua senha" formControlName="confirmaNovaSenha" />
+          </div>
+
+          <div *ngIf="form.hasError('mismatch')" class="alert alert-danger">
+            As senhas não coincidem.
+          </div>
+
+          <div *ngIf="showError" class="alert alert-danger mt-3">
+            {{ mensagem }}
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="button" class="btn btn-vermelho mx-2" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-azul-claro mx-2" [disabled]="isSubmitDisabled">Alterar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

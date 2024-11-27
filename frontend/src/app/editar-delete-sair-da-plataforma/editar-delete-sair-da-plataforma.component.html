@@ -1,0 +1,47 @@
+<!-- The Modal Deletar Acesso à Plataforma-->
+<div class="modal" id="myModal5">
+    <div class="modal-dialog">
+      <div class="modal-content bg-bege">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <p class="navbar-brand" href="#">
+            <img src="/assets/logo.png" alt="Logo" style="width:40px;">
+          </p>
+          <h4 class="modal-title">Apagar a conta</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body  criar conta-->
+        <div class="modal-body">
+  
+  <form [formGroup]="form" (ngSubmit)="inativarUsuario()">
+
+    <div class="mb-3 mt-3">
+        <p>Ao apagar a sua conta da plataforma você perderá o acesso às suas listas. Os comentários que você fez irão aparecer como "Usuário Inativo".</p>
+    </div>
+
+      <div class="mb-3 mt-3">
+          <label for="senha">Senha:</label>
+          <input type="password" class="form-control" id="senha" placeholder="Digite sua senha para confirmar" formControlName="senhaAtual" />
+      </div>
+    
+     
+    <!-- Exibir mensagem de erro quando showError for true -->
+    <div *ngIf="showError" class="alert alert-danger mt-3">
+      {{ mensagem }}
+    </div>
+  
+    
+      <!-- Modal footer -->
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-vermelho mx-2" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-azul-claro mx-2" [disabled]="isSubmitDisabled">Apagar</button>
+      </div>
+    </form>
+  
+  </div>
+  
+  </div>
+  </div>
+  </div> 

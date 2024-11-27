@@ -1,0 +1,31 @@
+<!-- Grid Dos Filmes -->
+<div class="container-fluid" style="background-color: #00678e">
+    <div class="container">
+      <h1 class="text-Left text-white"><br>{{ palavraBuscada || generoSelecionado }}</h1><br><br> 
+      <div class="row justify-content-center">
+        <ng-container *ngIf="lista && lista.length > 0; else produtosVazios">
+        <!-- Alteração automatica dos Filmes -->
+        <div *ngFor="let home of lista" class="col-md-3" style="margin: 20px;">
+          <div class="imagem-lista text-white">
+          <img src="{{home.foto}}" alt="Imagem do perfil" class="imagem-dentro"><br>
+        </div>
+          <p class="oi">Nome: {{home.nomeFilme}}<br>
+          <p class="oi">Distribuído: {{home.distribuidor}}</p>
+          <p class="oi">Ano de Lançamento: {{home.anoLancamento}}</p>
+          <a [routerLink]="['/tela-filme', home.codigoFilme]" class="d-block text-decoration-none">
+            <button class="btn watched" data-bs-toggle="offcanvas" data-bs-target="#carrinho">Ver mais</button>
+          </a>
+        </div>
+      </ng-container>
+        
+      <!-- Caso a lista esteja vazia, exibe uma mensagem -->
+      <ng-template #produtosVazios>
+        <h2>Infelizmente estamos sem filmes.</h2>
+      </ng-template>
+      
+      
+      </div>
+  
+      
+    </div>
+  </div>

@@ -1,0 +1,464 @@
+<html>
+
+<head>
+  <style>
+    .movie-card {
+      width: 200px;
+      height: 350px;
+      /* Adjust this value as needed */
+    }
+
+    .movie-poster {
+      height: 250px;
+      /* Adjust this value as needed */
+      object-fit: cover;
+    }
+
+    .movie-title {
+      height: 48px;
+      /* Adjust this value as needed */
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="text-light py-5" style="background-color:#00678e">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 text-center">
+            <div class="oval-panel">
+              <h1 class="display-4 mb-4">Sua jornada cinematográfica começa aqui</h1>
+              <p class="lead mb-4">Registre, avalie e descubra novos filmes com a comunidade Dina Filmes</p>
+              <div class="feature-blocks">
+                <div class="row justify-content-center">
+                  <div class="col-10 col-sm-8 col-md-6">
+                    <div class="row row-cols-2 g-3">
+                      <div class="col">
+                        <div class="p-3 rounded text-center" style="background-color: #F3D9A7;">
+                          <i class="bbi bi-bookmark-fill fs-2" style="color:#011f51;"></i>
+                          <p class="mb-0 text-dark">Á Assistir</p>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="p-3 rounded text-center" style="background-color: #F3D9A7;">
+                          <i class="bi bi-youtube fs-2" style="color: red;"></i>
+                          <p class="mb-0 text-dark">Assistir Trailer</p>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="p-3 rounded text-center" style="background-color: #F3D9A7;">
+                          <i class="bi bi-check-circle-fill fs-2" style="color:#6EADA2;"></i>
+                          <p class="mb-0 text-dark">Assistido</p>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="p-3 rounded text-center" style="background-color: #F3D9A7;">
+                          <i class="bi bi-heart-fill fs-2" style="color: red;"></i>
+                          <p class="mb-0 text-dark">Favoritar</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-5" style="background-color:  #00678e">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+          <h2>Sugestões</h2>
+        </div>
+        <div *ngIf="lista && lista.length > 0;">
+          <div class="container-fluid">
+            <div class="row flex-nowrap overflow-auto">
+              <div class="col-auto" *ngFor="let home of lista">
+                <div class="card movie-card">
+                  <a [routerLink]="['/tela-filme', home.codigoFilme]">
+                    <img src="{{home.foto}}" class="card-img-top movie-poster" alt="Poster do filme">
+                  </a>
+                  <div class="card-body">
+                    <h5 class="card-title movie-title">{{home.nomeFilme}}</h5>
+                    <p class="card-text text-white">{{home.anoLancamento}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção para filmes de comédia -->
+       <p></p>
+       <p></p>
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+          <h2>
+            <a [routerLink]="['/home']" [queryParams]="{ search: '', genero: 'Comedia' }" class="text-white">
+              Comédias
+            </a>
+          </h2>
+        </div>
+        <div *ngIf="listaComedia && listaComedia.length > 0;">
+          <div class="container-fluid">
+            <div class="row flex-nowrap overflow-auto">
+              <div class="col-auto" *ngFor="let home of listaComedia">
+                <div class="card movie-card">
+                  <a [routerLink]="['/tela-filme', home.codigoFilme]">
+                    <img src="{{home.foto}}" class="card-img-top movie-poster" alt="Poster do filme">
+                  </a>
+                  <div class="card-body">
+                    <h5 class="card-title movie-title">{{home.nomeFilme}}</h5>
+                    <p class="card-text text-white">{{home.anoLancamento}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+<!-- Seção para filmes de Ação -->
+<p></p>
+<p></p>
+<div class="container">
+ <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+  <h2>
+    <a [routerLink]="['/home']" [queryParams]="{ search: '', genero: 'Adrenalina' }" class="text-white">
+      Filmes de Ação
+    </a>
+  </h2>
+ </div>
+ <div *ngIf="listaAcao && listaAcao.length > 0;">
+   <div class="container-fluid">
+     <div class="row flex-nowrap overflow-auto">
+       <div class="col-auto" *ngFor="let home of listaAcao">
+         <div class="card movie-card">
+           <a [routerLink]="['/tela-filme', home.codigoFilme]">
+             <img src="{{home.foto}}" class="card-img-top movie-poster" alt="Poster do filme">
+           </a>
+           <div class="card-body">
+             <h5 class="card-title movie-title">{{home.nomeFilme}}</h5>
+             <p class="card-text text-white">{{home.anoLancamento}}</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+
+ 
+<!-- Seção para filmes de Terror -->
+<p></p>
+<p></p>
+<div class="container">
+ <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+  <h2>
+    <a [routerLink]="['/home']" [queryParams]="{ search: '', genero: 'Terror' }" class="text-white">
+      Filmes de Terror
+    </a>
+  </h2>
+ </div>
+ <div *ngIf="listaTerror && listaTerror.length > 0;">
+   <div class="container-fluid">
+     <div class="row flex-nowrap overflow-auto">
+       <div class="col-auto" *ngFor="let home of listaTerror">
+         <div class="card movie-card">
+           <a [routerLink]="['/tela-filme', home.codigoFilme]">
+             <img src="{{home.foto}}" class="card-img-top movie-poster" alt="Poster do filme">
+           </a>
+           <div class="card-body">
+             <h5 class="card-title movie-title">{{home.nomeFilme}}</h5>
+             <p class="card-text text-white">{{home.anoLancamento}}</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+
+ <!-- Seção para filmes de Fantasia -->
+<p></p>
+<p></p>
+<div class="container">
+ <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+  <h2>
+    <a [routerLink]="['/home']" [queryParams]="{ search: '', genero: 'Fantasia' }" class="text-white">
+      Filmes de Fantasia
+    </a>
+  </h2>
+ </div>
+ <div *ngIf="listaFantasia && listaFantasia.length > 0;">
+   <div class="container-fluid">
+     <div class="row flex-nowrap overflow-auto">
+       <div class="col-auto" *ngFor="let home of listaFantasia">
+         <div class="card movie-card">
+           <a [routerLink]="['/tela-filme', home.codigoFilme]">
+             <img src="{{home.foto}}" class="card-img-top movie-poster" alt="Poster do filme">
+           </a>
+           <div class="card-body">
+             <h5 class="card-title movie-title">{{home.nomeFilme}}</h5>
+             <p class="card-text text-white">{{home.anoLancamento}}</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+
+  <!-- Seção para filmes de Ficção Científica -->
+<p></p>
+<p></p>
+<div class="container">
+ <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+  <h2>
+    <a [routerLink]="['/home']" [queryParams]="{ search: '', genero: 'Ficção' }" class="text-white">
+      Ficção Científica
+    </a>
+  </h2>
+ </div>
+ <div *ngIf="listaFiccao && listaFiccao.length > 0;">
+   <div class="container-fluid">
+     <div class="row flex-nowrap overflow-auto">
+       <div class="col-auto" *ngFor="let home of listaFiccao">
+         <div class="card movie-card">
+           <a [routerLink]="['/tela-filme', home.codigoFilme]">
+             <img src="{{home.foto}}" class="card-img-top movie-poster" alt="Poster do filme">
+           </a>
+           <div class="card-body">
+             <h5 class="card-title movie-title">{{home.nomeFilme}}</h5>
+             <p class="card-text text-white">{{home.anoLancamento}}</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+
+   <!-- Seção para filmes de Drama -->
+<p></p>
+<p></p>
+<div class="container">
+ <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+  <h2>
+    <a [routerLink]="['/home']" [queryParams]="{ search: '', genero: 'Drama' }" class="text-white">
+      Dramas
+    </a>
+  </h2>
+ </div>
+ <div *ngIf="listaDrama && listaDrama.length > 0;">
+   <div class="container-fluid">
+     <div class="row flex-nowrap overflow-auto">
+       <div class="col-auto" *ngFor="let home of listaDrama">
+         <div class="card movie-card">
+           <a [routerLink]="['/tela-filme', home.codigoFilme]">
+             <img src="{{home.foto}}" class="card-img-top movie-poster" alt="Poster do filme">
+           </a>
+           <div class="card-body">
+             <h5 class="card-title movie-title">{{home.nomeFilme}}</h5>
+             <p class="card-text text-white">{{home.anoLancamento}}</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+
+    <!-- Seção para filmes de Animação -->
+<p></p>
+<p></p>
+<div class="container">
+ <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+  <h2>
+    <a [routerLink]="['/home']" [queryParams]="{ search: '', genero: 'Infantil' }" class="text-white">
+      Animações
+    </a>
+  </h2>
+ </div>
+ <div *ngIf="listaInfantil && listaInfantil.length > 0;">
+   <div class="container-fluid">
+     <div class="row flex-nowrap overflow-auto">
+       <div class="col-auto" *ngFor="let home of listaInfantil">
+         <div class="card movie-card">
+           <a [routerLink]="['/tela-filme', home.codigoFilme]">
+             <img src="{{home.foto}}" class="card-img-top movie-poster" alt="Poster do filme">
+           </a>
+           <div class="card-body">
+             <h5 class="card-title movie-title">{{home.nomeFilme}}</h5>
+             <p class="card-text text-white">{{home.anoLancamento}}</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+
+    <!-- Seção para filmes de Musical -->
+<p></p>
+<p></p>
+<div class="container">
+ <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+  <h2>
+    <a [routerLink]="['/home']" [queryParams]="{ search: '', genero: 'Musical' }" class="text-white">
+      Filmes Musicais
+    </a>
+  </h2>
+ </div>
+ <div *ngIf="listaMusical && listaMusical.length > 0;">
+   <div class="container-fluid">
+     <div class="row flex-nowrap overflow-auto">
+       <div class="col-auto" *ngFor="let home of listaMusical">
+         <div class="card movie-card">
+           <a [routerLink]="['/tela-filme', home.codigoFilme]">
+             <img src="{{home.foto}}" class="card-img-top movie-poster" alt="Poster do filme">
+           </a>
+           <div class="card-body">
+             <h5 class="card-title movie-title">{{home.nomeFilme}}</h5>
+             <p class="card-text text-white">{{home.anoLancamento}}</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+
+    <!-- Seção para filmes de Aventura -->
+<p></p>
+<p></p>
+<div class="container">
+ <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+  <h2>
+    <a [routerLink]="['/home']" [queryParams]="{ search: '', genero: 'Aventura' }" class="text-white">
+      Aventuras
+    </a>
+  </h2>
+ </div>
+ <div *ngIf="listaAventura && listaAventura.length > 0;">
+   <div class="container-fluid">
+     <div class="row flex-nowrap overflow-auto">
+       <div class="col-auto" *ngFor="let home of listaAventura">
+         <div class="card movie-card">
+           <a [routerLink]="['/tela-filme', home.codigoFilme]">
+             <img src="{{home.foto}}" class="card-img-top movie-poster" alt="Poster do filme">
+           </a>
+           <div class="card-body">
+             <h5 class="card-title movie-title">{{home.nomeFilme}}</h5>
+             <p class="card-text text-white">{{home.anoLancamento}}</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+
+    <!-- Seção para filmes de Romance -->
+<p></p>
+<p></p>
+<div class="container">
+ <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+  <h2>
+    <a [routerLink]="['/home']" [queryParams]="{ search: '', genero: 'Romance' }" class="text-white">
+      Romances
+    </a>
+  </h2>
+ </div>
+ <div *ngIf="listaRomance && listaRomance.length > 0;">
+   <div class="container-fluid">
+     <div class="row flex-nowrap overflow-auto">
+       <div class="col-auto" *ngFor="let home of listaRomance">
+         <div class="card movie-card">
+           <a [routerLink]="['/tela-filme', home.codigoFilme]">
+             <img src="{{home.foto}}" class="card-img-top movie-poster" alt="Poster do filme">
+           </a>
+           <div class="card-body">
+             <h5 class="card-title movie-title">{{home.nomeFilme}}</h5>
+             <p class="card-text text-white">{{home.anoLancamento}}</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+
+    <!-- Seção para filmes de Documentario -->
+<p></p>
+<p></p>
+<div class="container">
+ <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+  <h2>
+    <a [routerLink]="['/home']" [queryParams]="{ search: '', genero: 'Documentário' }" class="text-white">
+      Documentários
+    </a>
+  </h2>
+ </div>
+ <div *ngIf="listaDocumentario && listaDocumentario.length > 0;">
+   <div class="container-fluid">
+     <div class="row flex-nowrap overflow-auto">
+       <div class="col-auto" *ngFor="let home of listaDocumentario">
+         <div class="card movie-card">
+           <a [routerLink]="['/tela-filme', home.codigoFilme]">
+             <img src="{{home.foto}}" class="card-img-top movie-poster" alt="Poster do filme">
+           </a>
+           <div class="card-body">
+             <h5 class="card-title movie-title">{{home.nomeFilme}}</h5>
+             <p class="card-text text-white">{{home.anoLancamento}}</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+
+     <!-- Seção para filmes de Suspense -->
+<p></p>
+<p></p>
+<div class="container">
+ <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+  <h2>
+    <a [routerLink]="['/home']" [queryParams]="{ search: '', genero: 'Suspense' }" class="text-white">
+      Suspenses
+    </a>
+  </h2>
+ </div>
+ <div *ngIf="listaSuspense && listaSuspense.length > 0;">
+   <div class="container-fluid">
+     <div class="row flex-nowrap overflow-auto">
+       <div class="col-auto" *ngFor="let home of listaSuspense">
+         <div class="card movie-card">
+           <a [routerLink]="['/tela-filme', home.codigoFilme]">
+             <img src="{{home.foto}}" class="card-img-top movie-poster" alt="Poster do filme">
+           </a>
+           <div class="card-body">
+             <h5 class="card-title movie-title">{{home.nomeFilme}}</h5>
+             <p class="card-text text-white">{{home.anoLancamento}}</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+
+
+    </section>
+  </main>
+</body>
+
+</html>
