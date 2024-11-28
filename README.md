@@ -18,8 +18,8 @@ Passos para executar o TCC
 * Mysql: 3307
 
 O seed contém dois usuarios:
-comum: teste@teste.com
-administrador: admin@admin.com
+comum: teste@teste.com (senha: 123qwe!!!)
+administrador: admin@admin.com (senha: 123qwe!!!).
 Ambos podem ser utilizados para testes e também é possível criar um usuário durante a utilização da aplicação, neste caso deverá ser utilizado um e-mail válido.
 
 ### Para destruir os containers:
