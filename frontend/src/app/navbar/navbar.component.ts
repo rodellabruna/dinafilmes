@@ -16,33 +16,36 @@ export class NavbarComponent implements OnInit {
   foto: String = "";
   fotoPadrao: String = "/assets/padraPerfil.png";
   listaFilmes: any[] = [];
+  isAdmin: boolean = false;
 
   constructor(private authService: AuthService, private filmeService: FilmeService, private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.isAuthenticated$.subscribe(authStatus => {
       this.isAuthenticated = authStatus;
-
-      if (this.isAuthenticated) {
-        const codigoUsuario = localStorage.getItem("codigoUsuario");
-        if (codigoUsuario) {
-          this.usuarioService.getFotoUsuario(+codigoUsuario).subscribe(
-            (blob: Blob) => {
-              const objectURL = URL.createObjectURL(blob);
-              this.foto = objectURL;
-            },
-            (error) => {
-              console.error("Erro ao carregar a foto:", error);
-              this.foto = this.fotoPadrao; // Define uma imagem padrão caso ocorra erro
-            }
-          );
-        }
-      } else {
-        this.foto = this.fotoPadrao; // Imagem padrão se não estiver autenticado
-      }
     });
 
-    // Verifica o estado de autenticação no localStorage
+    this.authService.isAdmin$.subscribe(adminStatus => {
+      this.isAdmin = adminStatus;
+    });
+
+    if (this.isAuthenticated) {
+      const codigoUsuario = localStorage.getItem("codigoUsuario");
+      if (codigoUsuario) {
+        this.usuarioService.getFotoUsuario(+codigoUsuario).subscribe(
+          (blob: Blob) => {
+            const objectURL = URL.createObjectURL(blob);
+            this.foto = objectURL;
+          },
+          (error) => {
+            console.error("Erro ao carregar a foto:", error);
+            this.foto = this.fotoPadrao; // Define uma imagem padrão caso ocorra erro
+          }
+        );
+      }
+    } else {
+      this.foto = this.fotoPadrao; // Imagem padrão se não estiver autenticado
+    }
     this.authService.checkLocalStorageForUser();
   }
  

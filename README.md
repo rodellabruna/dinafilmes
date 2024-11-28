@@ -5,6 +5,7 @@ Passos para executar o TCC
 * Fazer um clone deste repositório
 * Abrir um terminal dentro da raiz do projeto e executar o comando: 
 `docker-compose up --build`
+* Aguarde até aparecer "Completed initialization in X ms"
 * Faça o seed dos dados em outro terminal - este precisa ser bash (não pode der no powershell ou cmd) - executar o comando:
 `docker exec -i mysql-db mysql -u root -pIodo2023! dina < ./db/seed.sql`
 * Acessar o localhost:4200 pelo navegador (Chrome ou Edge)

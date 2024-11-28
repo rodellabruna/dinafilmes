@@ -68,7 +68,19 @@
         <a class="nav-link" href="/lista-favoritos">Favoritos</a>
       </li>
    
-     
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link" href="/denuncia">Denúncia</a>
+      </li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link" href="/usuarios">Listar Usuários</a>
+      </li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link" href="/usuario">Buscar Usuário</a>
+      </li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link" href="/contatos-recebidos">Contatos Recebidos</a>
+      </li>
+      
     </ul>
     <ul class="navbar-nav ms-auto">
       <li class="nav-item" *ngIf="!isAuthenticated">
