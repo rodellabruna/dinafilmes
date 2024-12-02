@@ -19,47 +19,6 @@ export class LoginComponent  {
   
   constructor(private service: UsuarioService, private authService: AuthService, private router: Router) {}
 
-  // fazerLogin() {
-  //   console.log('Login attempted with:', this.obj);
-  //   try {
-  //     this.authService.login(this.obj.email, this.obj.senha).subscribe(
-  //       (retorno: Usuario) => {
-  //         if (!retorno || !retorno.nomeUsuario) {
-  //           // Se o login falhar por conta de email ou senha inválidos
-  //           this.mensagem = 'Email ou senha inválidos!';
-  //           this.showError = true;
-  //           this.authService.setAuthentication(false); 
-  //         } else if (retorno.ativo === false) {
-  //           // Se o usuário estiver inativo
-  //           this.mensagem = 'Usuário inativado da plataforma. Dúvidas entre em contato.';
-  //           this.showError = true;
-  //           this.authService.setAuthentication(false);
-  //         } else {
-  //           // Se o login for bem-sucedido e o usuário estiver ativo
-  //           this.mensagem = 'Login bem-sucedido!';
-  //           this.showError = false;
-  //           this.authService.setAuthentication(true); 
-  //           localStorage.setItem("nomeUsuario", retorno.nomeUsuario); 
-  //           localStorage.setItem("email", retorno.email);
-  //           localStorage.setItem("codigoUsuario", retorno.codigoUsuario?.toString());
-  //           localStorage.setItem("dataCriacao", retorno.dataCriacao?.toString() || '');
-            
-  //           window.location.href = "/vitrine";
-  //         }
-  //       },
-  //       (error) => {
-  //         // Lidando com erros no servidor
-  //         this.mensagem = 'Erro ao fazer login. Tente novamente mais tarde.';
-  //         this.showError = true;
-  //         this.authService.setAuthentication(false);
-  //       }
-  //     );
-  //   } catch {
-  //     this.mensagem = "Ocorreu um erro, tente novamente mais tarde.";
-  //     this.authService.setAuthentication(false);
-  //   }
-  // }
-
   fazerLogin() {
     console.log('Login attempted with:', this.obj);
   

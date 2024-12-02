@@ -478,7 +478,7 @@ export class TelaFilmeComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    // Verifique se codigoUsuario está definido antes de enviar a denúncia
+    
     if (this.codigoUsuario === null) {
       alert('Erro: Usuário não autenticado.');
       return;
@@ -490,10 +490,10 @@ export class TelaFilmeComponent implements OnInit, AfterViewInit {
     }
 
     const novaDenuncia = {
-      usuarioDenunciante: this.codigoUsuario, // Aqui já garantimos que é um número
+      usuarioDenunciante: this.codigoUsuario,
       tipoDenuncia: tipoSelecionado,
       comentario: { codigoComentario: this.codigoComentario }, // Código do comentário sendo denunciado
-      denunciaAcatada: null // Supondo que 'denunciaAcatada' inicialmente seja nula
+      denunciaAcatada: null 
     };
 
     // Envia a denúncia para o backend

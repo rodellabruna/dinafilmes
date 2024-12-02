@@ -18,7 +18,9 @@
       <ng-container *ngIf="assistidos && assistidos.length > 0; else semAssistidos">
         <div *ngFor="let filme of assistidos" class="col-md-3" style="margin: 20px ;">
           <div class="imagem-lista bg-bege">
-            <img [src]="filme.foto" alt="Imagem do perfil" class="imagem-dentro"><br>
+
+              <img [src]="filme.foto" alt="Imagem do perfil" class="imagem-dentro"><br>
+
           </div>
           <p class="Nome">Nome: {{filme.nomeFilme}}<br>
           <p class="Produzido por:">Distribuído: {{filme.distribuidor}}</p>

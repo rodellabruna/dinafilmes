@@ -16,7 +16,7 @@ import java.util.Optional;
 public interface ComentariosRepository extends JpaRepository<ComentariosEntity, Integer>{
 
     @Query("SELECT new com.dinafilmes.backend.ComentarioDTO(c.codigoComentario, c.usuario.codigoUsuario, c.comentario, c.usuario.nomeUsuario, c.comSpoiler, c.apagadoOuModerado) " +
-    "FROM ComentariosEntity c WHERE c.filme.codigoFilme = ?1 AND c.apagadoOuModerado != true")
+    "FROM ComentariosEntity c WHERE c.filme.codigoFilme = ?1 AND c.apagadoOuModerado != true AND c.usuario.ativo != false" )
     List<ComentarioDTO> carregarListaComentarios(int codigoFilme);
 
     @Query("SELECT COUNT(c) FROM ComentariosEntity c WHERE c.filme.codigoFilme = ?1 AND c.apagadoOuModerado != true")
